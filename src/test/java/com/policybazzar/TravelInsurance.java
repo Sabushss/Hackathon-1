@@ -24,9 +24,9 @@ public class TravelInsurance{
     WebDriver driver;
 
     WebDriverWait wait;
-    
+    //creating object to call travel insurance pom
     TravelInsurancePom fetch = new TravelInsurancePom();
-    
+    //creating array list
     List<Integer> set = new ArrayList<Integer>();  
     List<String> insurance = new ArrayList<String>();
 
@@ -35,16 +35,16 @@ public class TravelInsurance{
         this.driver = driver;
 
     	wait = new WebDriverWait(driver,Duration.ofSeconds(25));
-
+       
         Travel_Data travel_values = new Travel_Data();
         
         data = travel_values.readData();
 
 		fetch.travel(driver);
 
-		//Filling Dummy Values in the form for two Students
+		//Filling Values in the form for two Students
 		
-		click_travel_insurance();
+		click_travel_insurance(); 
 		
 		send_country();
 		
@@ -83,9 +83,9 @@ public class TravelInsurance{
         fetch.country(data[0]);
      
         Thread.sleep(2000);
-
+        //to wait until the condition is met
         wait.until(ExpectedConditions.visibilityOfElementLocated(fetch.country_search));
-
+        //calling the method country search
         fetch.country_search();      
         
         wait.until(ExpectedConditions.elementToBeClickable(fetch.button));
@@ -95,7 +95,7 @@ public class TravelInsurance{
 	}
 	
 	public void send_dates() throws InterruptedException {
-	
+	         
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 	    
 		String browserName = cap.getBrowserName().toLowerCase();
@@ -144,7 +144,7 @@ public class TravelInsurance{
 	public void passengers() {
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(fetch.no_of_passengers));
-        
+        //Passing required input fetched from excel for passenger details
         fetch.no_of_passengers();
 
         fetch.first_passenger(data[3]);
@@ -156,7 +156,7 @@ public class TravelInsurance{
         fetch.click();
 
 	}
-	
+	//Selecting medical prerequisites of passengers
 	public void select_no() {
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(fetch.no));
@@ -164,7 +164,7 @@ public class TravelInsurance{
         fetch.no_click();
 
 	}
-	
+	//Providing phone number
 	public void ph_no() {
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(fetch.ph_no));
@@ -178,7 +178,7 @@ public class TravelInsurance{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
 	}
-
+    //Handling Different UIs
     public void ui_one() throws InterruptedException{
           	    
     	wait.until(ExpectedConditions.visibilityOfElementLocated(fetch.sort_one));
@@ -204,7 +204,7 @@ public class TravelInsurance{
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(fetch.price_one));          
         
         List<WebElement> allLinks = driver.findElements(fetch.price_one);
-                 
+         //using for loop and iterating to fetch the lowest three price         
         for(WebElement link:allLinks){               
                 if(link.getText()!=null)
                     if(link.getText().substring(0).contains("₹"))
@@ -220,7 +220,7 @@ public class TravelInsurance{
         allLinks = driver.findElements(fetch.name_one); 
         
         List<String> hash_Set = new ArrayList<String>();
-        
+         //using for loop and iterating to fetch the policy name       
         for(WebElement link:allLinks)
             {		
         		if(link.getText()!=null)
@@ -235,7 +235,7 @@ public class TravelInsurance{
         }
              
     }
-
+    //Handling different UIs
     public void ui_two() throws InterruptedException{            
     	
     	wait.until(ExpectedConditions.visibilityOfElementLocated(fetch.sort_two));
@@ -243,7 +243,7 @@ public class TravelInsurance{
         fetch.sort_two();
         
         List<WebElement> allLinks = driver.findElements(fetch.price_two); 
-                            
+             //using for loop and iterating to fetch the lowest three price                       
             for(WebElement link:allLinks)
                 {	if(link.getText().length()!=0)		            				
                         {
@@ -257,7 +257,7 @@ public class TravelInsurance{
                 }
      
         allLinks = driver.findElements(fetch.name_two);
-
+          //using for loop and iterating to fetch the policy name    
         for(WebElement e:allLinks){
             if(e.getAttribute("class").contains("Logo"))
                 if(e.getAttribute("class").substring(0,4).equals("Logo"))
@@ -267,7 +267,7 @@ public class TravelInsurance{
         String[][] output = new String[3][2];
         
         String temp = "";
-
+        //storing the price and insurance name in a two dimensional array
         for(int i=0;i<3;i++)
             {                                                    
                 for(int j=0;j<2;j++){
@@ -280,7 +280,7 @@ public class TravelInsurance{
                     output[i][j] = String.valueOf(temp);        
                 }                  
         }
-        
+        //Printing the output list int he console
         System.out.println(Arrays.deepToString(output));
         
     }
