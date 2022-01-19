@@ -12,9 +12,9 @@ public class Rep {
 	public static ExtentReports reporter() {
 		
 		if(report==null) {
-		
+		        //Initiating Extent report and declaring the location to save the report
 			ExtentHtmlReporter htmlreporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"./HTML_Reports/ExtentReport.html");
-			
+			//Setting basic structure of report
 			report=new ExtentReports();
 			report.attachReporter(htmlreporter);
 			report.setSystemInfo("OS", "Windows 10");
