@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Car_Data {
 
-	public static String[] customerData = new String[3];
+	public static String[] customerData = new String[3]; //declaring string array named customer data
 	
 	public String[] readData() throws IOException {
 		
