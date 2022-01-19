@@ -15,21 +15,21 @@ public class DriverSetup {
 		//Assigns FireFox Properties to the Driver
     	if(browser.equalsIgnoreCase("firefox"))
     	{    		
-    		WebDriverManager.firefoxdriver().setup();    
+    		WebDriverManager.firefoxdriver().setup();  //Launching browser setup  
     	
     		driver = new FirefoxDriver(); 
-    		driver.manage().window().maximize();    		
-			driver.get("https://www.policybazaar.com/");
+    		driver.manage().window().maximize();    //maximizing window		
+			driver.get("https://www.policybazaar.com/"); // Launching the URL
     		
     	}
 		//Assigns Chrome Properties to the Driver
     	else if(browser.equalsIgnoreCase("chrome"))
     	{    	
-    		WebDriverManager.chromedriver().setup();
+    		WebDriverManager.chromedriver().setup(); //Launching browser setup
     		
     		driver = new ChromeDriver();
-    		driver.manage().window().maximize();
-			driver.get("https://www.policybazaar.com/");
+    		driver.manage().window().maximize();  //maximizing window
+			driver.get("https://www.policybazaar.com/"); //Launching the URL
     		
     	}
         return driver;
