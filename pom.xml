@@ -5,7 +5,12 @@
   	 <artifactId>hackathon</artifactId>
   	 <version>0.0.1-SNAPSHOT</version>
 	
-		<dependencies>
+	 <build>
+        	<sourceDirectory>src</sourceDirectory>
+        	<testSourceDirectory>test</testSourceDirectory>
+	 </build>
+	
+	<dependencies>
 
 	<dependency>
 		<groupId>io.github.bonigarcia</groupId>
